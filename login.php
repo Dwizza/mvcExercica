@@ -1,14 +1,9 @@
 <?php 
 require_once 'db.php';
+require_once 'user.php';
 if(isset($_POST['submit'])){
-    $query = "select * from users where mail = '".$_POST['email']."' and password = '".$_POST['password']."'";
-    $stmt = $conn->prepare($query);
-    $result = $stmt->execute();
-    $result = $stmt->fetch();
-    if($result){
-        echo "connect succefull";
-    }else echo "error";
-
+    $check = new User($_POST['email'], $_POST['password']);
+    $check->login();
 }
 ?>
 

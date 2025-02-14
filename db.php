@@ -1,18 +1,20 @@
 <?php
-// Database credentials
-$servername = "localhost"; // or your server IP address
-$username = "root";
-$password = "";
-$dbname = "SimpleDB";
+class database{
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "SimpleDB";
+    private $conn;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+public function getConnection(){
+    $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }else {
+        return $conn;
+    }
 }
 
-// Close the connection
-// $conn->close();
-?>
+
+}
