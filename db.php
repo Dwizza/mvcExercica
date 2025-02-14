@@ -15,6 +15,4 @@ public function getConnection(){
         return $conn;
     }
 }
-
-
 }
